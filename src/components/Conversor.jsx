@@ -12,7 +12,7 @@ export default function Conversor () {
   return (
     <Grid container direction="column" justifyContent="center" align="center">
       <Grid item xs={12}>
-        Convierta a binario el siguiente número: {calcu.numeroDecimal}
+        Convierta a binario el siguiente número decimal: {calcu.numeroDecimal}
       </Grid>
       <Grid item xs={12}>
         <Caja/>
