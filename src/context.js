@@ -6,17 +6,10 @@ export const calcuInicial = {
   sumaParcial: 0,
   botonSigInactivo: true,
   numeroDecimal: 3,
+  arrayBinarioActual: [1, 1, 0, 0, 0, 0, 0, 0],
+  puntaje: 0,
+  malaJugada: false,
 };
-
-export const calcuFinal = {
-    indiceNumeroDecimal: 19,
-    numeroBinario: [1, 1, 1, 1, 1, 1, 1, 1],
-    sumaParcial: 255,
-    botonSigInactivo: true,
-    numeroDecimal: 255,
-  };
-
-
 
 //Creo contexto
 export const CalcuContext = createContext();

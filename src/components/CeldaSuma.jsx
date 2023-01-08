@@ -8,7 +8,7 @@ const CeldaSuma = () => {
   const calcu = useContext(CalcuContext);
 
   return (
-    <Grid item xs={2}>
+    <Grid item xs={1}>
       <Grid
         container
         direction="column"

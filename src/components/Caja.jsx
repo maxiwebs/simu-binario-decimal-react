@@ -6,13 +6,10 @@ import CeldaSig from "./CeldaSig";
 import CeldaBinario from "./CeldaBinario";
 
 const Caja = () => {
-  //Traigo contexto para usar estado
-  //const { calcu, handleEstadoCalcu } = useContext(CalcuContext);
-  //const dispatch = useContext(CalcuDispatchContext);
 
   return (
     <Box
-      width="50%"
+      width="70%"
       color="primary.contrastText"
       bgcolor="primary.main"
       border={1}

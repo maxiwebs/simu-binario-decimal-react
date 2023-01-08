@@ -9,7 +9,8 @@ const CeldaSig = () => {
 
   //Por defecto no muestro Ok
   let muestro_ok = ""
-  if (!calcu.botonSigInactivo){muestro_ok = "OK"}
+  if (!calcu.botonSigInactivo){muestro_ok = "OK (+20)"}
+  if (calcu.mala_jugada){muestro_ok = "MAL! (-10)"}
   
   return (
     <Grid item xs={2}>
@@ -21,7 +22,7 @@ const CeldaSig = () => {
       alignItems="center"
       spacing={3}
     >
-      <Grid item>Ptos:</Grid>
+      <Grid item>Ptos: {calcu.puntaje}</Grid>
       <Grid item>{muestro_ok}</Grid>
       <Grid item>
         <Button
