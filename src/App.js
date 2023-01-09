@@ -1,5 +1,5 @@
 import { useReducer} from "react";
-import Conversor from "./components/Conversor";
+import Caja from "./components/Caja";
 import { CalcuContext, CalcuDispatchContext, calcuInicial } from "./context";
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
   return (
     <CalcuContext.Provider value={calcu}>
       <CalcuDispatchContext.Provider value={dispatch}>
-        <Conversor />
+        <Caja />
       </CalcuDispatchContext.Provider>
     </CalcuContext.Provider>
   );

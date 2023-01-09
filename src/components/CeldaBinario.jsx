@@ -57,7 +57,8 @@ const CeldaBinario = ({pot, suma}) => {
                 maxHeight: "25px",
                 minWidth: "10px",
                 minHeight: "10px",
-                backgroundColor: "#AAA",
+                color: "#0F0",
+                backgroundColor: "#000",
                 padding: "5px",
               }}
             >

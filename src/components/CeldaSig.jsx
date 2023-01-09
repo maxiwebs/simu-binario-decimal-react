@@ -26,6 +26,7 @@ const CeldaSig = () => {
       <Grid item>{muestro_ok}</Grid>
       <Grid item>
         <Button
+          color='success'
           onClick={() => {
             dispatch({
                 type: "sigNum",
@@ -33,11 +34,11 @@ const CeldaSig = () => {
           }}
           disabled={calcu.botonSigInactivo}
           style={{
-            maxWidth: "25px",
-            maxHeight: "25px",
+            maxWidth: "30px",
+            maxHeight: "30px",
             minWidth: "10px",
             minHeight: "10px",
-            backgroundColor: "#AAA",
+            backgroundColor: "#FFF",
             padding: "5px",
           }}
         >
