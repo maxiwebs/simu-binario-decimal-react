@@ -35,7 +35,7 @@ const CeldaBinario = ({pot, suma}) => {
           alignItems="center"
           spacing={1}
         >
-          <Grid item>2^{pot}</Grid>
+          <Grid item>2<sup>{pot}</sup></Grid>
           <Grid item>
             <Button
               onClick={() => {
