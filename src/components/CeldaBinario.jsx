@@ -8,11 +8,22 @@ const CeldaBinario = ({pot, suma}) => {
   const calcu = useContext(CalcuContext);
   const dispatch = useContext(CalcuDispatchContext);
 
-  //Por defecto no muestro el "+X"
-  let suma_visible_oculta = ""
+  //Seteo color de suma (+2^pot)
+  let color_suma = "white"
+  let fondo_suma = "#1976d2"
   if (calcu.numeroBinario[pot] === 1){
-    suma_visible_oculta = suma
+    fondo_suma = "white"
+    if (calcu.arrayBinarioActual[pot] === 1){
+      color_suma = "#76ff03"
+      fondo_suma = "black"  
+    }else {
+      color_suma = "red"
+      fondo_suma = "black"
+    }
+  }else {
+    fondo_suma = "#1976d2"
   }
+  
 
   return (
     <>
@@ -66,7 +77,9 @@ const CeldaBinario = ({pot, suma}) => {
             </Button>
           </Grid>
           <Grid item>
-            {suma_visible_oculta}
+            <div style = {{ backgroundColor: fondo_suma, color: color_suma }}>
+              {suma}
+            </div>
           </Grid>
         </Grid>
       </Box>

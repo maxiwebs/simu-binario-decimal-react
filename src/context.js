@@ -9,6 +9,8 @@ export const calcuInicial = {
   arrayBinarioActual: [1, 1, 0, 0, 0, 0, 0, 0],
   puntaje: 0,
   malaJugada: false,
+  indiceJugada: -1,
+  numeroActualBinarioStr: ""
 };
 
 //Creo contexto

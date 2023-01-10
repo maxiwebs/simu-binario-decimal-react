@@ -32,17 +32,21 @@ function calcuReducer(calcu, action) {
           numeroBinario: [0,0,0,0,0,0,0,0],
           puntaje: calcu.puntaje,
           mala_jugada: false,
+          indiceJugada: -1,
+          numeroActualBinarioStr: "",
         };
       }else {
         newStateCalcu = {
           numeroDecimal: 3,
-          arrayBinarioActual: [0,0,0,0,0,0,0,0],
+          arrayBinarioActual: [1,1,0,0,0,0,0,0],
           indiceNumeroDecimal: 0,
           sumaParcial: 0,
           botonSigInactivo: true,
           numeroBinario: [0,0,0,0,0,0,0,0],
           puntaje: calcu.puntaje,
           mala_jugada: false,
+          indiceJugada: -1,
+          numeroActualBinarioStr: "",
         };
       }
       break;
@@ -51,13 +55,18 @@ function calcuReducer(calcu, action) {
       let arrayBinario = calcu.numeroBinario
       let indice = action.pot.pot
       let pifio = false
+      let binarioStr = ""
       arrayBinario[indice] = 1
       let nuevaSumaParcial = calculoSumaParcial(arrayBinario)
       let nuevoPuntaje = actualizarPuntaje(arrayBinario,indice,calcu.puntaje, calcu.arrayBinarioActual)
       if (nuevoPuntaje < calcu.puntaje){pifio = true}
       let estadoBtnSig = botonInactivo(nuevaSumaParcial,calcu.numeroDecimal)
       //Si habilito btn sig es porque acertó. Sumo 20 ptos
-      if (!estadoBtnSig){nuevoPuntaje=nuevoPuntaje+20}
+      if (!estadoBtnSig){
+        nuevoPuntaje=nuevoPuntaje+20
+        binarioStr = dameStrBinario(calcu.arrayBinarioActual)
+      }
+
       newStateCalcu = {
         numeroBinario: arrayBinario,
         numeroDecimal: calcu.numeroDecimal,
@@ -66,21 +75,25 @@ function calcuReducer(calcu, action) {
         botonSigInactivo: estadoBtnSig,
         puntaje: nuevoPuntaje,
         arrayBinarioActual: calcu.arrayBinarioActual,
-        mala_jugada: pifio,
+        malaJugada: pifio,
+        indiceJugada: indice,
+        numeroActualBinarioStr: binarioStr,
       };
       break;
     }
     case 'cambioBitA0':{
       let arrayBinario = calcu.numeroBinario
       let indice = action.pot.pot
-      let pifio = false
+      let binarioStr = ""
       arrayBinario[indice] = 0
       let nuevaSumaParcial = calculoSumaParcial(arrayBinario)
       let nuevoPuntaje = actualizarPuntaje(arrayBinario,indice,calcu.puntaje, calcu.arrayBinarioActual)
-      if (nuevoPuntaje < calcu.puntaje){pifio = true}
       let estadoBtnSig = botonInactivo(nuevaSumaParcial,calcu.numeroDecimal)
       //Si habilito btn sig es porque acertó. Sumo 20 ptos
-      if (!estadoBtnSig){nuevoPuntaje=nuevoPuntaje+20}
+      if (!estadoBtnSig){
+        nuevoPuntaje=nuevoPuntaje+20
+        binarioStr = dameStrBinario(calcu.arrayBinarioActual)
+      }
       newStateCalcu = {
         numeroBinario: arrayBinario,
         numeroDecimal: calcu.numeroDecimal,
@@ -89,7 +102,9 @@ function calcuReducer(calcu, action) {
         botonSigInactivo: estadoBtnSig,
         puntaje: nuevoPuntaje,
         arrayBinarioActual: calcu.arrayBinarioActual,
-        mala_jugada: pifio,
+        malaJugada: calcu.malaJugada,
+        indiceJugada: indice,
+        numeroActualBinarioStr: binarioStr,
       };
       break;
     }
@@ -120,7 +135,7 @@ function actualizarPuntaje( array_binario, indice, puntaje_actual, array_binario
   //Si lo que puso no es correcto
   if (array_binario[indice] !== array_binario_actual[indice]){
     //Resto 10
-    nuevo_puntaje=nuevo_puntaje-10 
+    nuevo_puntaje=nuevo_puntaje-20 
   }
   return nuevo_puntaje
 }
@@ -139,6 +154,14 @@ function dameArrayBinarioOk(numDecimal){
     index--
   }
   return arrayCorrecto
+}
+
+function dameStrBinario(array_binario){
+  let str_binario = ""
+  for (let i = array_binario.length -1; i >= 0; i--){
+    str_binario+=array_binario[i].toString()
+  }
+  return str_binario
 }
 
 const arrayNumeros = [

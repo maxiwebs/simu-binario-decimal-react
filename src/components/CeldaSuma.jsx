@@ -12,27 +12,27 @@ const CeldaSuma = () => {
       <Grid
         container
         direction="column"
-        justifyContent="center"
-        align="center"
-        alignItems="center"
+        justifyContent="left"
+        align="left"
+        alignItems="left"
         spacing={0}
       >
-        <Grid item></Grid>
-
         <Grid item>
           <Box
             color="secundary"
             bgcolor="secundary.main"
             borderColor="#000"
             marginTop={5}
-            marginLeft={1}
+            marginLeft={2}
             display="flex"
             justifyContent="center"
           >
+            <span style={{fontSize: 18 ,backgroundColor : 'white', color: 'black'}}>
             = {calcu.sumaParcial}
+            </span>
+
           </Box>
         </Grid>
-        <Grid item></Grid>
       </Grid>
     </Grid>
   );
