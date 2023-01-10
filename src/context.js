@@ -10,7 +10,8 @@ export const calcuInicial = {
   puntaje: 0,
   malaJugada: false,
   indiceJugada: -1,
-  numeroActualBinarioStr: ""
+  numeroActualBinarioStr: "",
+  sonido: "sig",
 };
 
 //Creo contexto

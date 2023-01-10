@@ -34,6 +34,7 @@ function calcuReducer(calcu, action) {
           mala_jugada: false,
           indiceJugada: -1,
           numeroActualBinarioStr: "",
+          sonido: "new",
         };
       }else {
         newStateCalcu = {
@@ -47,6 +48,7 @@ function calcuReducer(calcu, action) {
           mala_jugada: false,
           indiceJugada: -1,
           numeroActualBinarioStr: "",
+          sonido: "new",
         };
       }
       break;
@@ -54,12 +56,15 @@ function calcuReducer(calcu, action) {
     case 'cambioBitA1':{
       let arrayBinario = calcu.numeroBinario
       let indice = action.pot.pot
-      let pifio = false
+      let pifio = false, nuevoSonido = "ok"
       let binarioStr = ""
       arrayBinario[indice] = 1
       let nuevaSumaParcial = calculoSumaParcial(arrayBinario)
       let nuevoPuntaje = actualizarPuntaje(arrayBinario,indice,calcu.puntaje, calcu.arrayBinarioActual)
-      if (nuevoPuntaje < calcu.puntaje){pifio = true}
+      if (nuevoPuntaje < calcu.puntaje){
+        pifio = true
+        nuevoSonido = "mal"
+      }
       let estadoBtnSig = botonInactivo(nuevaSumaParcial,calcu.numeroDecimal)
       //Si habilito btn sig es porque acertó. Sumo 20 ptos
       if (!estadoBtnSig){
@@ -78,6 +83,7 @@ function calcuReducer(calcu, action) {
         malaJugada: pifio,
         indiceJugada: indice,
         numeroActualBinarioStr: binarioStr,
+        sonido: nuevoSonido,
       };
       break;
     }
@@ -105,6 +111,7 @@ function calcuReducer(calcu, action) {
         malaJugada: calcu.malaJugada,
         indiceJugada: indice,
         numeroActualBinarioStr: binarioStr,
+        sonido: "",
       };
       break;
     }

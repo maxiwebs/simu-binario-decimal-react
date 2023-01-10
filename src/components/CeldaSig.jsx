@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CalcuContext, CalcuDispatchContext } from "../context";
 import { Button, Grid } from "@mui/material";
+import sig from "../sounds/sig.wav"
 
 const CeldaSig = () => {
   //Traigo contexto para usar estado
@@ -16,6 +17,16 @@ const CeldaSig = () => {
     muestro_ok = "(-20)";
   }
 
+    //Si hay nuevo numero
+    if (calcu.indiceJugada === -1){
+      //Ejecuto sonido bien/mal
+      playSound(calcu.sonido)
+    }
+  
+    function playSound(){
+      new Audio(sig).play()
+    }
+  
   return (
     <Grid item xs={3}>
       <Grid
