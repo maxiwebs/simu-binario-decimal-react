@@ -12,7 +12,7 @@ const Caja = () => {
 
   return (
     <Box
-      width="60%"
+      width="70%"
       color="primary.contrastText"
       bgcolor="primary.main"
       border={1}
